@@ -43,20 +43,25 @@
         ctx.fillStyle = color;
         var figura = true
 
-        canvas.addEventListener("click", (e) =>{
-            console.log("Hola")
-
+        canvas.addEventListener("click", (e)=>{
+            console.log("hola")
             console.log(e)
-
+            if(figura){
             ctx.beginPath();
-            ctx.arc(e.layerX, e.layerY, 50, 0, 2 * Math.PI);
+            ctx.arc(e.layerX,e.layerY,50, 0, 2 * Math.PI);
             ctx.fill();
-            ctx.stroke();
-            
+            ctx.stroke();}
+            else{
+            ctx.fillRect(e.layerX-50,e.layerY-50,70,70)
+            ctx.strokeRect(e.layerX-50,e.layerY-50,70,70)
+        }})
 
-            
+         canvas.addEventListener("mouseout", (e)=>{
+            console.log("mouseout")
+            figura=!figura;
 
         })
+        
         canvas.addEventListener("mouseover", (e)=>{
             console.log("mouseover")
             color=random_rgba();
