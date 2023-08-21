@@ -57,6 +57,17 @@
             
 
         })
+        canvas.addEventListener("mouseover", (e)=>{
+            console.log("mouseover")
+            color=random_rgba();
+            ctx.fillStyle=color;
+
+        })
+
+        function random_rgba() {
+            var o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
+        }
 
 
 
