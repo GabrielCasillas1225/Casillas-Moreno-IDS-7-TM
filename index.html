@@ -74,6 +74,25 @@
             return 'rgba(' + o(r()*s) + ',' + o(r()*s) + ',' + o(r()*s) + ')';
         }
 
+        canvas.addEventListener('mousemove', (e) => {
+        if (pressed) {
+        ctx.beginPath();
+        ctx.arc(e.layerX, e.layerY, 10, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.stroke();
+        ctx.closePath();
+        }
+    });
+
+    canvas.addEventListener('mousedown', (e) => {
+        pressed = true;
+    });
+    
+    canvas.addEventListener('mouseup', (e) => {
+        pressed = false;
+    })
+
+
 
 
         /*var canvas = document.getElementById("canvas");
