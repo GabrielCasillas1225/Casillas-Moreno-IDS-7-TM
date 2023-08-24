@@ -55,7 +55,7 @@
     }
 
     function drawRandomSquare() {
-        const size = Math.floor(); // Tamaño aleatorio entre 50 y 150
+        const size = Math.floor(); 
         const x = Math.random() * 900 + 1;
         const y = Math.random() * 450 + 1;
         
@@ -67,7 +67,6 @@
 
     window.addEventListener("keydown", (event) => {
       if (event.key === " ") { // Espacio key
-        //ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
         drawRandomSquare();
     }
     });
