@@ -39,7 +39,7 @@
         // codigo viejo
         /*var canvas = document.getElementById("canvas");
         ctx = canvas.getContext('2d');*/
-        var x = 225, y = 225;
+        var x = 15, y = 10;
 
         //codigo nuevo
         const canvas = document.getElementById("canvas");
@@ -54,7 +54,7 @@
         return color;
     }
 
-    function drawRandomSquare() {
+    /*function drawRandomSquare() {
         const size = Math.floor(); 
         const x = Math.random() * 900 + 1;
         const y = Math.random() * 450 + 1;
@@ -63,14 +63,51 @@
 
         ctx.fillStyle = color;
         ctx.fillRect(x, y, 50, 50);
-    }
+    }*/
 
     window.addEventListener("keydown", (event) => {
-      if (event.key === " ") { // Espacio key
+      /*if (event.key === " ") { // Espacio key
         drawRandomSquare();
+    }*/
+
+    if(event.keyCode == 38){ //tecla arriba
+        y-=10
+
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(x,y,50,50);
     }
+
+    if(event.keyCode == 39){ //tecla derecha
+        x+=10
+
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(x,y,50,50);
+    }
+
+    if(event.keyCode == 40){ //tecla abajo
+        y+=10
+
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(x,y,50,50);
+    }
+
+    if(event.keyCode == 37){ // tecla izquierda
+        x-=10
+
+        ctx.fillStyle = getRandomColor();
+        ctx.fillRect(x,y,50,50);
+    }
+    
+    
+
+    console.log(event);
+    console.log(event.keyCode);
     });
-        
+
+    
+    
+    ctx.fillStyle = 'red';
+    ctx.fillRect(x,y,50,50); //x, y, 
 
 
 
