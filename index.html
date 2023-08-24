@@ -32,13 +32,68 @@
 <body>
 
 
-    <canvas width="500" height="500" id="canvas"  ></canvas>
+    <canvas width="900" height="450" id="canvas"  ></canvas>
     
 
     <script>
+        // codigo viejo
+        /*var canvas = document.getElementById("canvas");
+        ctx = canvas.getContext('2d');*/
+        var x = 225, y = 225;
 
-        var canvas = document.getElementById("canvas");
-        ctx = canvas.getContext('2d');
+        //codigo nuevo
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        function getRandomColor() {
+        const letters = "0123456789ABCDEF";
+        let color = "#";
+        for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    function drawRandomSquare() {
+        const size = Math.floor(); // Tamaño aleatorio entre 50 y 150
+        const x = Math.random() * 900 + 1;
+        const y = Math.random() * 450 + 1;
+        
+        const color = getRandomColor();
+
+        ctx.fillStyle = color;
+        ctx.fillRect(x, y, 50, 50);
+    }
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === " ") { // Espacio key
+        //ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpiar el canvas
+        drawRandomSquare();
+    }
+    });
+        
+
+
+
+
+
+
+
+        /*document.addEventListener("keydown",(e) => {
+            console.log(e);
+
+            
+        })
+
+        ctx.fillRect(x, y, )
+        ctx.strokeRect(x, y, 70, 70)*/
+
+        
+
+
+
+
+        /*let pressed = false;
         var color = "rgba(13,242,23,0.5)";
         ctx.fillStyle = color;
         var figura = true
@@ -56,11 +111,13 @@
             ctx.strokeRect(e.layerX-50,e.layerY-50,70,70)
         }})
 
-         canvas.addEventListener("mouseout", (e)=>{
+        canvas.addEventListener("mouseout", (e)=>{
             console.log("mouseout")
             figura=!figura;
 
         })
+
+        
         
         canvas.addEventListener("mouseover", (e)=>{
             console.log("mouseover")
@@ -92,6 +149,7 @@
         pressed = false;
     })
 
+*/
 
 
 
