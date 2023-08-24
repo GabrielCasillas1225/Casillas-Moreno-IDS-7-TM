@@ -44,6 +44,8 @@
         //codigo nuevo
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
+        
+
 
         function getRandomColor() {
         const letters = "0123456789ABCDEF";
@@ -66,10 +68,13 @@
     }*/
 
     window.addEventListener("keydown", (event) => {
-      /*if (event.key === " ") { // Espacio key
-        drawRandomSquare();
-    }*/
-
+        /*if (event.key === " ") { // Espacio key
+            drawRandomSquare();
+        }*/
+        
+        ctx.fillStyle = 'white';
+        ctx.fillRect(0,0,900,450);
+        
     if(event.keyCode == 38){ //tecla arriba
         y-=10
 
@@ -96,6 +101,7 @@
 
         ctx.fillStyle = getRandomColor();
         ctx.fillRect(x,y,50,50);
+
     }
     
     
