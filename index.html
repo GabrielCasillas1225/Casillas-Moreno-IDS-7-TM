@@ -1,124 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canvas Act 26</title>
-
-
-    <style type="text/css">
-        * {
-            margin: 0px;
-            padding: 0px;
-
-        }
-
-        canvas {
-            display: block;
-            background-color: #fff;
-            border: solid red;
-        }
-
-        body {
-            background-color: #ffffff;
-        }
-    </style>
-
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>paisaje</title>
+<style>
+    #canvas {
+    border: 1px solid black;
+    }
+</style>
 </head>
-
 <body>
+<canvas id="canvas" width="550" height="350"></canvas>
+<script>
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
 
-    <canvas id="canvas" width="900" height="450"></canvas>
+    // Dibujar el fondo
+    ctx.fillStyle = '#7ACAE5';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    <script>
+    /*ctx.beginPath();
+    ctx.arc(197, 100, 50, 0, Math.PI * 2);
+    ctx.fillStyle = '#FAD0A1';
+    ctx.fill();*/
 
-        var canvas = document.getElementById("canvas");
-        ctx = canvas.getContext('2d');
-        var x = 225, y = 225;
-        var dir = 0;
+    // sol
+    ctx.beginPath();
+    ctx.arc(490, 20, 150, 0, Math.PI * 2);
+    ctx.fillStyle = "#F68F1E"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+    
+    // cesped
+    ctx.fillStyle = '#28B463';
+    ctx.fillRect(1,300,800,150);
 
-        document.addEventListener("keydown", (e) => {
+    
+    // casa
+    ctx.fillStyle = '#C70039';
+    ctx.fillRect(50,200,110,100);
 
-            switch (e.keyCode) {
-                case 87:
-                    dir = e.keyCode;
-                    break;
-                case 83:
-                    dir = e.keyCode;
-                    break;
-                case 68:
-                    dir = e.keyCode;
-                    break;
-                case 65:
-                    dir = e.keyCode;
-                    break;
+    // ventana casa izq
+    ctx.beginPath();
+    ctx.rect(52, 215, 33, 33);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
 
-            }
+    // linea horizontal
+    ctx.beginPath();
+    ctx.moveTo(53, 233);
+    ctx.lineTo(84, 233);
+    ctx.strokeStyle = "orange"; // Color de la línea
+    ctx.lineWidth = 3; // Ancho de la línea
+    ctx.stroke();
+    ctx.closePath();
 
-        })
+     // linea vertical
+    ctx.beginPath();
+    ctx.moveTo(68, 215); // -
+    ctx.lineTo(68, 248); // +
+    ctx.strokeStyle = "pink"; // Color de la línea
+    ctx.lineWidth = 3; // Ancho de la línea
+    ctx.stroke();
+    ctx.closePath();
 
-        function repaint() {
+    // ventana casa der
+    ctx.beginPath();
+    ctx.rect(125, 215, 33, 33);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
 
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, 900, 450);
+    // linea horizontal
+    ctx.beginPath();
+    ctx.moveTo(125, 233);
+    ctx.lineTo(159, 233);
+    ctx.strokeStyle = "green"; // Color de la línea
+    ctx.lineWidth = 3; // Ancho de la línea
+    ctx.stroke();
+    ctx.closePath();
 
-            ctx.fillStyle = random_rgba();
-            ctx.fillRect(x, y, 70, 70);
-            ctx.strokeRect(x, y, 70, 70);
-        }
+    // linea vertical
+    ctx.beginPath();
+    ctx.moveTo(141, 215); // -
+    ctx.lineTo(141, 248); // +
+    ctx.strokeStyle = "yellow"; // Color de la línea
+    ctx.lineWidth = 3; // Ancho de la línea
+    ctx.stroke();
+    ctx.closePath();
+    
+    // puerta casa
+    ctx.fillStyle = 'white';
+    ctx.fillRect(85,260,40,40);
 
-        function random_rgba() {
-            var o = Math.round, r = Math.random, s = 255;
-            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')';
-        }
-
-        function update() {
-
-            switch (dir) {
-                case 87:
-                    y -= 10;
-                    if(y < -50 ) {y = 550}
-                    break;
-                case 83:
-                    if(y > 550 ) {y = -50}
-                    y += 10;
-                    break;
-                case 68:
-                    if(x > 550 ) {x = -50}
-                    x += 10;
-                    break;
-                case 65:
-                    x -= 10;
-                    if(x < -50 ) {x = 550}
-                    break;
-
-            }
-            repaint();
-            window.requestAnimationFrame(update);
-
-        }
-        window.requestAnimationFrame = (function () {
-            return window.requestAnimationFrame ||
-                window.webkitRequestAnimationFrame ||
-                window.mozRequestAnimationFrame ||
-                function (callback) {
-                    window.setTimeout(callback, 17);
-                };
-        }());
-
-        window.requestAnimationFrame(update);
+    ctx.beginPath();
+    ctx.arc(120, 285, 4, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
 
 
+    // techo
+    ctx.beginPath();
+    ctx.moveTo(105,150);
+    ctx.lineTo(50,200);
+    ctx.lineTo(160,200); 
+    ctx.fillStyle = 'blue';
+    ctx.fill();
+    
+    // carro
+    ctx.fillStyle = 'black';
+    ctx.fillRect(350,225,80,60);
+
+    // piloto
+    ctx.fillStyle = 'black';
+    ctx.fillRect(325,255,40,30);
+
+    // ventana carro
+    ctx.fillStyle = 'gray';
+    ctx.fillRect(350,225,30,30);
+
+    // ruedas
+    ctx.beginPath();
+    ctx.arc(340, 290, 12, 0, Math.PI * 2);
+    ctx.fillStyle = "white"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+    
+    ctx.beginPath();
+    ctx.arc(412, 290, 12, 0, Math.PI * 2);
+    ctx.fillStyle = "white"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // arbustos
+    ctx.beginPath();
+    ctx.arc(488, 290, 20, 0, Math.PI * 2);
+    ctx.fillStyle = '#28B463'; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // arbustos
+    ctx.beginPath();
+    ctx.arc(510, 280, 20, 0, Math.PI * 2);
+    ctx.fillStyle = '#28B463'; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // arbustos
+    ctx.beginPath();
+    ctx.arc(530, 290, 20, 0, Math.PI * 2);
+    ctx.fillStyle = '#28B463'; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    //manzanas
+    ctx.beginPath();
+    ctx.arc(530, 290, 5, 0, Math.PI * 2);
+    ctx.fillStyle = 'red'; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(490, 290, 5, 0, Math.PI * 2);
+    ctx.fillStyle = 'red'; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    ctx.beginPath();
+    ctx.arc(510, 275, 5, 0, Math.PI * 2);
+    ctx.fillStyle = 'red'; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
 
 
-
-        
-
-    </script>
-
+</script>
 </body>
-
 </html>
