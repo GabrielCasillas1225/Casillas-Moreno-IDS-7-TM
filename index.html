@@ -1,119 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Avatar</title>
-<style>
-    #canvas {
-    border: 1px solid black;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Act 26</title>
+
+
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+
+        }
+
+        canvas {
+            display: block;
+            background-color: #fff;
+            border: solid red;
+        }
+
+        body {
+            background-color: #ffffff;
+        }
+    </style>
+
+
 </head>
+
 <body>
-<canvas id="canvas" width="550" height="650"></canvas>
-<script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
 
-    // Dibujar el fondo
-    ctx.fillStyle = '#A1FAF1';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    <canvas id="canvas" width="900" height="450"></canvas>
 
-    // Dibujar la cabeza
-    ctx.beginPath();
-    ctx.arc(197, 100, 50, 0, Math.PI * 2);
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fill();
+    <script>
 
-    // Dibujar Cuello
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fillRect(180,140,30,110);
-    
+        var canvas = document.getElementById("canvas");
+        ctx = canvas.getContext('2d');
+        var x = 225, y = 225;
+        var dir = 0;
 
-    // Dibujar los ojos
-    ctx.beginPath();
-    ctx.arc(180, 80, 7, 0, Math.PI * 2);
-    ctx.fillStyle = 'black';
-    ctx.fill();
-    ctx.stroke();
+        document.addEventListener("keydown", (e) => {
 
-    ctx.beginPath();
-    ctx.arc(212, 80, 7, 0, Math.PI * 2);
-    ctx.fillStyle = 'black';
-    ctx.fill();
-    ctx.stroke();
+            switch (e.keyCode) {
+                case 87:
+                    dir = e.keyCode;
+                    break;
+                case 83:
+                    dir = e.keyCode;
+                    break;
+                case 68:
+                    dir = e.keyCode;
+                    break;
+                case 65:
+                    dir = e.keyCode;
+                    break;
 
-    // Dibujar la boca
-    ctx.beginPath();
-    ctx.arc(195, 100, 30, 0.2 * Math.PI, 0.8 * Math.PI);
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 2;
-    ctx.stroke();
+            }
 
-    // Dibujar el cuerpo
+        })
 
-    ctx.fillStyle = '#61ADE3';
-    ctx.fillRect(140,165,110,180);
+        function repaint() {
 
-    //brazos mangas
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(250,165,20,60);
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 900, 450);
 
-    ctx.fillStyle = 'blue';
-    ctx.fillRect(120,165,20,60);
+            ctx.fillStyle = random_rgba();
+            ctx.fillRect(x, y, 70, 70);
+            ctx.strokeRect(x, y, 70, 70);
+        }
 
-    // brazo izq
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fillRect(70,180,50,30);
+        function random_rgba() {
+            var o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')';
+        }
 
-    // mano izq
-    ctx.beginPath();
-    ctx.arc(65, 195, 17, 00, Math.PI * 2);
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fill();
+        function update() {
 
-    // brazo der
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fillRect(270,180,50,30);
+            switch (dir) {
+                case 87:
+                    y -= 10;
+                    if(y < -50 ) {y = 550}
+                    break;
+                case 83:
+                    if(y > 550 ) {y = -50}
+                    y += 10;
+                    break;
+                case 68:
+                    if(x > 550 ) {x = -50}
+                    x += 10;
+                    break;
+                case 65:
+                    x -= 10;
+                    if(x < -50 ) {x = 550}
+                    break;
 
-    // mano der
-    ctx.beginPath();
-    ctx.arc(327, 195, 17, 00, Math.PI * 2);
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fill();
+            }
+            repaint();
+            window.requestAnimationFrame(update);
 
-    // pantalon
-    ctx.fillStyle = '#C70039';
-    ctx.fillRect(140,345,110,85);
+        }
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 17);
+                };
+        }());
 
-    //piernas
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fillRect(150,430,26,85);
+        window.requestAnimationFrame(update);
 
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fillRect(210,430,26,85);
 
-    // tenis der
-    ctx.fillStyle = 'black';
-    ctx.fillRect(210,510,46,25);
 
-    // punta der 
-    ctx.beginPath();
-    ctx.arc(257, 522, 12.8, 00, Math.PI * 2);
-    ctx.fillStyle = 'black';
-    ctx.fill();
 
-    // tenis izq
-    ctx.fillStyle = 'black';
-    ctx.fillRect(130,510,46,25);
 
-    // punta izq
-    ctx.beginPath();
-    ctx.arc(128, 522, 12.8, 00, Math.PI * 2);
-    ctx.fillStyle = 'black';
-    ctx.fill();
+        
 
-</script>
+    </script>
+
 </body>
+
 </html>
