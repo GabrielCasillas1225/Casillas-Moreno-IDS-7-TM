@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>paisaje</title>
+<title>Mario</title>
 <style>
     #canvas {
     border: 1px solid black;
@@ -17,165 +17,399 @@
     const ctx = canvas.getContext('2d');
 
     // Dibujar el fondo
-    ctx.fillStyle = '#7ACAE5';
+    ctx.fillStyle = '#9BE1F5';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    /*ctx.beginPath();
-    ctx.arc(197, 100, 50, 0, Math.PI * 2);
-    ctx.fillStyle = '#FAD0A1';
-    ctx.fill();*/
 
-    // sol
+    // contorno bloque CODIGO BUENO  
     ctx.beginPath();
-    ctx.arc(490, 20, 150, 0, Math.PI * 2);
-    ctx.fillStyle = "#F68F1E"; // Color del círculo
+    ctx.rect(220,150,100,150);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // contorno bloque CODIGO BUENO  
+    ctx.beginPath();
+    ctx.rect(30,170,35,35);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // contorno bloque CODIGO BUENO  
+    ctx.beginPath();
+    ctx.rect(80,25,35,35);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // contorno bloque CODIGO BUENO  
+    ctx.beginPath();
+    ctx.rect(116,25,35,35);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+    
+
+    // bloque
+    ctx.fillStyle = '#4BB7D6';
+    ctx.fillRect(220,150,100,150);
+
+    // sombra bloque
+    ctx.fillStyle = 'black';
+    ctx.fillRect(180,210,105,90);
+
+    // bloque 
+    ctx.fillStyle = '#FFA07A';
+    ctx.fillRect(150,200,110,100);
+
+    // contorno bloque
+    ctx.beginPath();
+    ctx.rect(150, 200, 110, 100);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+
+
+    // piso
+    ctx.fillStyle = '#FFA07A';
+    ctx.fillRect(1,300,800,150);
+    ctx.stroke();
+
+    // circulo gris rectangulo azul
+    ctx.beginPath();
+    ctx.arc(305, 165, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // circulo gris rectangulo azul
+    ctx.beginPath();
+    ctx.arc(235, 165, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // circulo gris cuadrado //5 
+    ctx.beginPath();
+    ctx.arc(165, 215, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // circulo gris cuadrado //4 
+    ctx.beginPath();
+    ctx.arc(245, 215, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // circulo gris cuadrado //3
+    ctx.beginPath();
+    ctx.arc(245, 285, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // circulo gris cuadrado //2
+    ctx.beginPath();
+    ctx.arc(245, 287, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
     ctx.fill();
     ctx.closePath();
     
-    // cesped
+    // circulo gris cuadrado //1
+    ctx.beginPath();
+    ctx.arc(165, 287, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+
+    // contorno bloque
+    ctx.beginPath();
+    ctx.rect(470,200,110,100);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // circulo gris cuadrado contorno 
+    ctx.beginPath();
+    ctx.arc(165, 287, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // circulo gris cuadrado contorno 
+    ctx.beginPath();
+    ctx.arc(245, 287, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // circulo gris cuadrado contorno 
+    ctx.beginPath();
+    ctx.arc(245, 215, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // circulo gris cuadrado contorno 
+    ctx.beginPath();
+    ctx.arc(235, 165, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // circulo gris cuadrado contorno 
+    ctx.beginPath();
+    ctx.arc(305, 165, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // circulo gris cuadrado contorno 
+    ctx.beginPath();
+    ctx.arc(165, 215, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
+
+    // bloque ************************ 
     ctx.fillStyle = '#28B463';
-    ctx.fillRect(1,300,800,150);
+    ctx.fillRect(360, 200,80,40);
+
+    // contorno bloque CODIGO BUENO VERDE ************ 
+    ctx.beginPath();
+    ctx.rect(360,200,80,40);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
+    ctx.stroke();
+    ctx.closePath();
 
     
-    // casa
-    ctx.fillStyle = '#C70039';
-    ctx.fillRect(50,200,110,100);
 
-    // ventana casa izq
+    // bloque 
+    ctx.fillStyle = '#28B463';
+    ctx.fillRect(363, 240, 75, 60);
+
+     // contorno bloque CODIGO BUENO VERDE ************ 
     ctx.beginPath();
-    ctx.rect(52, 215, 33, 33);
+    ctx.rect(362,240,75,60);
     ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
     ctx.stroke();
     ctx.closePath();
 
-    // linea horizontal
-    ctx.beginPath();
-    ctx.moveTo(53, 233);
-    ctx.lineTo(84, 233);
-    ctx.strokeStyle = "orange"; // Color de la línea
-    ctx.lineWidth = 3; // Ancho de la línea
-    ctx.stroke();
-    ctx.closePath();
+     // bloque //IMPORTANTE
+    ctx.fillStyle = '#4BE15F';
+    ctx.fillRect(470, 200,110,100);
 
-     // linea vertical
+    // circulo gris cuadrado verde contorno 
     ctx.beginPath();
-    ctx.moveTo(68, 215); // -
-    ctx.lineTo(68, 248); // +
-    ctx.strokeStyle = "pink"; // Color de la línea
-    ctx.lineWidth = 3; // Ancho de la línea
-    ctx.stroke();
-    ctx.closePath();
-
-    // ventana casa der
-    ctx.beginPath();
-    ctx.rect(125, 215, 33, 33);
+    ctx.arc(485, 215, 8, 0, Math.PI * 2);
     ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
     ctx.stroke();
     ctx.closePath();
 
-    // linea horizontal
+    // circulo gris cuadrado verde contorno 
     ctx.beginPath();
-    ctx.moveTo(125, 233);
-    ctx.lineTo(159, 233);
-    ctx.strokeStyle = "green"; // Color de la línea
-    ctx.lineWidth = 3; // Ancho de la línea
+    ctx.arc(485, 285, 8, 0, Math.PI * 2);
+    ctx.strokeStyle = "black"; // Color del contorno
+    ctx.lineWidth = 1; // Ancho del contorno
     ctx.stroke();
     ctx.closePath();
 
-    // linea vertical
+    // circulo gris cuadrado //1
     ctx.beginPath();
-    ctx.moveTo(141, 215); // -
-    ctx.lineTo(141, 248); // +
-    ctx.strokeStyle = "yellow"; // Color de la línea
-    ctx.lineWidth = 3; // Ancho de la línea
-    ctx.stroke();
+    ctx.arc(485, 285, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+     // circulo gris cuadrado //1
+    ctx.beginPath();
+    ctx.arc(485, 215, 8, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // cuadrado flotando lado izquierdo
+    ctx.fillStyle = '#F2A762';
+    ctx.fillRect(30,170,35,35);
+
+    // cuadrados flotando ariiba
+    ctx.fillStyle = '#F2A762';
+    ctx.fillRect(80,25,35,35);
+
+    ctx.fillStyle = '#F2A762';
+    ctx.fillRect(116,25,35,35);
+
+    ctx.fillStyle = '#F2A762';
+    ctx.fillRect(500,110,35,35);
+
+    // circulo gris cuadrado
+    ctx.beginPath();
+    ctx.arc(85, 35, 4, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(83, 28, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
     ctx.closePath();
     
-    // puerta casa
-    ctx.fillStyle = 'white';
-    ctx.fillRect(85,260,40,40);
-
+    // circulo gris cuadrado
     ctx.beginPath();
-    ctx.arc(120, 285, 4, 0, Math.PI * 2);
+    ctx.arc(110, 35, 3, 0, Math.PI * 2);
+    ctx.fillStyle = "#C9C9C9"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(83, 57, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(110, 57, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(111, 28, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(120, 28, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(147, 28, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(147, 58, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(120, 58, 1, 0, Math.PI * 2);
     ctx.fillStyle = "black"; // Color del círculo
     ctx.fill();
     ctx.closePath();
 
 
-    // techo
+    // punto negro cuadrado
     ctx.beginPath();
-    ctx.moveTo(105,150);
-    ctx.lineTo(50,200);
-    ctx.lineTo(160,200); 
-    ctx.fillStyle = 'blue';
+    ctx.arc(35, 175, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
     ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(60, 175, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(60, 200, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(35, 200, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(505, 115, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(530, 115, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(505, 140, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    // punto negro cuadrado
+    ctx.beginPath();
+    ctx.arc(530, 140, 1, 0, Math.PI * 2);
+    ctx.fillStyle = "black"; // Color del círculo
+    ctx.fill();
+    ctx.closePath();
+
+    var img = new Image();
+    img.src = "./img/mario_super_bros_icon_232936.png";
+    var img2 = new Image();
+    img2.src = "./img/flor.png"
+    var img3 = new Image();
+    img3.src = "./img/arbusto.png";
     
-    // carro
-    ctx.fillStyle = 'black';
-    ctx.fillRect(350,225,80,60);
 
-    // piloto
-    ctx.fillStyle = 'black';
-    ctx.fillRect(325,255,40,30);
-
-    // ventana carro
-    ctx.fillStyle = 'gray';
-    ctx.fillRect(350,225,30,30);
-
-    // ruedas
-    ctx.beginPath();
-    ctx.arc(340, 290, 12, 0, Math.PI * 2);
-    ctx.fillStyle = "white"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+    img.onload = function(){
+    ctx.drawImage(img, 280, 244, 60, 60);
+    ctx.drawImage(img2,368, 140, 60, 60); // 60,60
     
-    ctx.beginPath();
-    ctx.arc(412, 290, 12, 0, Math.PI * 2);
-    ctx.fillStyle = "white"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+    }
 
-    // arbustos
-    ctx.beginPath();
-    ctx.arc(488, 290, 20, 0, Math.PI * 2);
-    ctx.fillStyle = '#28B463'; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+    img2.onload = function(){
+    ctx.drawImage(img2,368, 140, 60, 60); // 60,60
+    }
 
-    // arbustos
-    ctx.beginPath();
-    ctx.arc(510, 280, 20, 0, Math.PI * 2);
-    ctx.fillStyle = '#28B463'; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+    img3.onload = function(){
+    ctx.drawImage(img3,35, 244, 60, 60); // 60,60
+    }
 
-    // arbustos
-    ctx.beginPath();
-    ctx.arc(530, 290, 20, 0, Math.PI * 2);
-    ctx.fillStyle = '#28B463'; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    //manzanas
-    ctx.beginPath();
-    ctx.arc(530, 290, 5, 0, Math.PI * 2);
-    ctx.fillStyle = 'red'; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.beginPath();
-    ctx.arc(490, 290, 5, 0, Math.PI * 2);
-    ctx.fillStyle = 'red'; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    ctx.beginPath();
-    ctx.arc(510, 275, 5, 0, Math.PI * 2);
-    ctx.fillStyle = 'red'; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
 
 
 </script>
