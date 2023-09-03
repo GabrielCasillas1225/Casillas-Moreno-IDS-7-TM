@@ -1,417 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mario</title>
-<style>
-    #canvas {
-    border: 1px solid black;
-    }
-</style>
-</head>
-<body>
-<canvas id="canvas" width="550" height="350"></canvas>
-<script>
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-
-    // Dibujar el fondo
-    ctx.fillStyle = '#9BE1F5';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Act 26</title>
 
 
-    // contorno bloque CODIGO BUENO  
-    ctx.beginPath();
-    ctx.rect(220,150,100,150);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
 
-    // contorno bloque CODIGO BUENO  
-    ctx.beginPath();
-    ctx.rect(30,170,35,35);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        }
 
-    // contorno bloque CODIGO BUENO  
-    ctx.beginPath();
-    ctx.rect(80,25,35,35);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        #canvas {
+            display: block;
+            background-color: #fff;
+            border: solid  red;
+        }
 
-    // contorno bloque CODIGO BUENO  
-    ctx.beginPath();
-    ctx.rect(116,25,35,35);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        body {
+            background-color: #ffffff;
+        }
+        
+        </style>
+        
+    </head>
     
+    <body>
+        
+        <canvas id="canvas" width="500" height="450"></canvas>
 
-    // bloque
-    ctx.fillStyle = '#4BB7D6';
-    ctx.fillRect(220,150,100,150);
+    <script>
 
-    // sombra bloque
-    ctx.fillStyle = 'black';
-    ctx.fillRect(180,210,105,90);
-
-    // bloque 
-    ctx.fillStyle = '#FFA07A';
-    ctx.fillRect(150,200,110,100);
-
-    // contorno bloque
-    ctx.beginPath();
-    ctx.rect(150, 200, 110, 100);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        var canvas = document.getElementById("canvas");
+        ctx = canvas.getContext('2d');
+        var x = 225, y = 225;
+        var dir = 0;
+        // variables para colision
+        var t_x = 225, t_y = 225, t_w = 70, t_h = 70, w = 70, h = 70;
 
 
+        document.addEventListener("keydown", (e) => {
 
-    // piso
-    ctx.fillStyle = '#FFA07A';
-    ctx.fillRect(1,300,800,150);
-    ctx.stroke();
+            switch (e.keyCode) {
+                case 87:
+                    dir = e.keyCode;
+                    break;
+                case 83:
+                    dir = e.keyCode;
+                    break;
+                case 68:
+                    dir = e.keyCode;
+                    break;
+                case 65:
+                    dir = e.keyCode;
+                    break;
 
-    // circulo gris rectangulo azul
-    ctx.beginPath();
-    ctx.arc(305, 165, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            }
 
-    // circulo gris rectangulo azul
-    ctx.beginPath();
-    ctx.arc(235, 165, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+        })
 
-    // circulo gris cuadrado //5 
-    ctx.beginPath();
-    ctx.arc(165, 215, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+        function repaint() {
 
-    // circulo gris cuadrado //4 
-    ctx.beginPath();
-    ctx.arc(245, 215, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            ctx.fillStyle = "white";
+            ctx.fillRect(0, 0, 900, 450);
 
-    // circulo gris cuadrado //3
-    ctx.beginPath();
-    ctx.arc(245, 285, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            // cuadrado moviendose
+            ctx.fillStyle = random_rgba();
+            ctx.fillRect(x, y, w, h);
+            ctx.strokeRect(x, y, w, h);
 
-    // circulo gris cuadrado //2
-    ctx.beginPath();
-    ctx.arc(245, 287, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-    
-    // circulo gris cuadrado //1
-    ctx.beginPath();
-    ctx.arc(165, 287, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            // cuadrado colision
+            ctx.fillStyle = "black";
+            ctx.fillRect(t_x,t_y,t_w,t_h);
 
 
-    // contorno bloque
-    ctx.beginPath();
-    ctx.rect(470,200,110,100);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 2; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        }
 
-    // circulo gris cuadrado contorno 
-    ctx.beginPath();
-    ctx.arc(165, 287, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        function random_rgba() {
+            var o = Math.round, r = Math.random, s = 255;
+            return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')';
+        }
 
-    // circulo gris cuadrado contorno 
-    ctx.beginPath();
-    ctx.arc(245, 287, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        
 
-    // circulo gris cuadrado contorno 
-    ctx.beginPath();
-    ctx.arc(245, 215, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+        function update() {
 
-    // circulo gris cuadrado contorno 
-    ctx.beginPath();
-    ctx.arc(235, 165, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+            switch (dir) {
+                case 87:
+                    y -= 10;
+                    if(y < -50 ) {y = 550}
+                    break;
+                case 83:
+                    if(y > 550 ) {y = -50}
+                    y += 10;
+                    break;
+                case 68:
+                    if(x > 550 ) {x = -50}
+                    x += 10;
+                    break;
+                case 65:
+                    x -= 10;
+                    if(x < -50 ) {x = 550}
+                    break;
 
-    // circulo gris cuadrado contorno 
-    ctx.beginPath();
-    ctx.arc(305, 165, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+            }
 
-    // circulo gris cuadrado contorno 
-    ctx.beginPath();
-    ctx.arc(165, 215, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
+            if(x < t_x + t_w &&  x + w > t_x &&    y < t_y + t_h &&    y + h > t_y){
 
-    // bloque ************************ 
-    ctx.fillStyle = '#28B463';
-    ctx.fillRect(360, 200,80,40);
+                generarposicion();
 
-    // contorno bloque CODIGO BUENO VERDE ************ 
-    ctx.beginPath();
-    ctx.rect(360,200,80,40);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
-
-    
-
-    // bloque 
-    ctx.fillStyle = '#28B463';
-    ctx.fillRect(363, 240, 75, 60);
-
-     // contorno bloque CODIGO BUENO VERDE ************ 
-    ctx.beginPath();
-    ctx.rect(362,240,75,60);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
-
-     // bloque //IMPORTANTE
-    ctx.fillStyle = '#4BE15F';
-    ctx.fillRect(470, 200,110,100);
-
-    // circulo gris cuadrado verde contorno 
-    ctx.beginPath();
-    ctx.arc(485, 215, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
-
-    // circulo gris cuadrado verde contorno 
-    ctx.beginPath();
-    ctx.arc(485, 285, 8, 0, Math.PI * 2);
-    ctx.strokeStyle = "black"; // Color del contorno
-    ctx.lineWidth = 1; // Ancho del contorno
-    ctx.stroke();
-    ctx.closePath();
-
-    // circulo gris cuadrado //1
-    ctx.beginPath();
-    ctx.arc(485, 285, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-     // circulo gris cuadrado //1
-    ctx.beginPath();
-    ctx.arc(485, 215, 8, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // cuadrado flotando lado izquierdo
-    ctx.fillStyle = '#F2A762';
-    ctx.fillRect(30,170,35,35);
-
-    // cuadrados flotando ariiba
-    ctx.fillStyle = '#F2A762';
-    ctx.fillRect(80,25,35,35);
-
-    ctx.fillStyle = '#F2A762';
-    ctx.fillRect(116,25,35,35);
-
-    ctx.fillStyle = '#F2A762';
-    ctx.fillRect(500,110,35,35);
-
-    // circulo gris cuadrado
-    ctx.beginPath();
-    ctx.arc(85, 35, 4, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(83, 28, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-    
-    // circulo gris cuadrado
-    ctx.beginPath();
-    ctx.arc(110, 35, 3, 0, Math.PI * 2);
-    ctx.fillStyle = "#C9C9C9"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(83, 57, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(110, 57, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(111, 28, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(120, 28, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(147, 28, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(147, 58, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
-
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(120, 58, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            }
+            
 
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(35, 175, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+                
+            repaint();
+            window.requestAnimationFrame(update);
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(60, 175, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+        }
+        window.requestAnimationFrame = (function () {
+            return window.requestAnimationFrame ||
+                window.webkitRequestAnimationFrame ||
+                window.mozRequestAnimationFrame ||
+                function (callback) {
+                    window.setTimeout(callback, 17);
+                };
+        }());
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(60, 200, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+        window.requestAnimationFrame(update);
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(35, 200, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+        function generarposicion(){
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(505, 115, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(530, 115, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            t_x = Math.floor(Math.random()*(460-0+1)+0);
+            t_y = Math.floor(Math.random()*(390-0+1)+0);
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(505, 140, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
 
-    // punto negro cuadrado
-    ctx.beginPath();
-    ctx.arc(530, 140, 1, 0, Math.PI * 2);
-    ctx.fillStyle = "black"; // Color del círculo
-    ctx.fill();
-    ctx.closePath();
+            
 
-    var img = new Image();
-    img.src = "./img/mario_super_bros_icon_232936.png";
-    var img2 = new Image();
-    img2.src = "./img/flor.png"
-    var img3 = new Image();
-    img3.src = "./img/arbusto.png";
-    
-
-    img.onload = function(){
-    ctx.drawImage(img, 280, 244, 60, 60);
-    ctx.drawImage(img2,368, 140, 60, 60); // 60,60
-    
-    }
-
-    img2.onload = function(){
-    ctx.drawImage(img2,368, 140, 60, 60); // 60,60
-    }
-
-    img3.onload = function(){
-    ctx.drawImage(img3,35, 244, 60, 60); // 60,60
-    }
+        }
 
 
 
-</script>
+
+
+        
+
+    </script>
+
 </body>
+
 </html>
