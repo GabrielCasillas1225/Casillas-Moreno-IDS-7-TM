@@ -42,7 +42,11 @@
         // variables para colision
         var t_x = 225, t_y = 225, t_w = 70, t_h = 70, w = 70, h = 70;
         var t1 = 80, t2 = 50, w1 = 300, h1 = 50;
-        var posicion1 = 0, posicion2 = 0; 
+        var posicion1 = 0, posicion2 = 0;
+        
+        var t10 = 80, t20 = 350, w10 = 300, h10 = 50;
+        var posicion3 = 0, posicion4 = 0;
+        
 
         document.addEventListener("keydown", (e) => {
 
@@ -83,6 +87,12 @@
             ctx.fillRect(t1,t2,w1,h1);
 
             posicion1  = x, posicion2 = y;
+
+            // rectangulo 2 colision gris
+            ctx.fillStyle = "gray";
+            ctx.fillRect(80,350,300,50);
+
+            posicion3 = x, posicion4 = y;
 
 
         }
@@ -128,6 +138,17 @@
                 
                 x = posicion1;
                 y = posicion2;
+
+                console.log("tocando");
+
+
+            }
+
+            if(x < t10 + w10 &&  x + w > t10 &&    y < t20 + h10 &&    y + h > t20){
+
+                
+                x = posicion3;
+                y = posicion4;
 
                 console.log("tocando");
 
