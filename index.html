@@ -48,6 +48,14 @@
 
         let score = -5;
         let pause = false;
+        let image = new Image();
+        image.src = "./perro.png";
+
+        let sonido = new Audio();
+        sonido.src = "./sonidomario.mp3";
+
+        let sonido2 = new Audio();
+        sonido2.src = "./musicafondo.mp3";
 
 
         document.addEventListener("keydown", (e) => {
@@ -89,13 +97,17 @@
 
 
                 // cuadrado moviendose
-                ctx.fillStyle = random_rgba();
+                //ctx.fillStyle = random_rgba();
+                ctx.fillStyle = "white";
                 ctx.fillRect(x, y, w, h);
-                ctx.strokeRect(x, y, w, h);
+                //ctx.strokeRect(x, y, w, h);
+
+                ctx.drawImage(image,x,y,w,h);
 
                 // cuadrado colision
                 ctx.fillStyle = "black";
                 ctx.fillRect(t_x, t_y, t_w, t_h);
+
 
                 // rectangulo colision gris
                 ctx.fillStyle = "gray";
@@ -132,6 +144,8 @@
 
 
         function update() {
+
+            sonido2.play();
 
             if (!pause) {
 
@@ -212,6 +226,7 @@
             t_y = Math.floor(Math.random() * (390 - 0 + 1) + 0);
 
             score += 5;
+            sonido.play();
 
 
         }
