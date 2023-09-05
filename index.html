@@ -18,20 +18,19 @@
         #canvas {
             display: block;
             background-color: #fff;
-            border: solid  red;
+            border: solid red;
         }
 
         body {
             background-color: #ffffff;
         }
-        
-        </style>
-        
-    </head>
-    
-    <body>
-        
-        <canvas id="canvas" width="500" height="450"></canvas>
+    </style>
+
+</head>
+
+<body>
+
+    <canvas id="canvas" width="500" height="450"></canvas>
 
     <script>
 
@@ -43,26 +42,33 @@
         var t_x = 225, t_y = 225, t_w = 70, t_h = 70, w = 70, h = 70;
         var t1 = 80, t2 = 50, w1 = 300, h1 = 50;
         var posicion1 = 0, posicion2 = 0;
-        
+
         var t10 = 80, t20 = 350, w10 = 300, h10 = 50;
         var posicion3 = 0, posicion4 = 0;
-        
+
+        let score = -5;
+        let pause = false;
+
 
         document.addEventListener("keydown", (e) => {
 
             switch (e.keyCode) {
                 case 87:
-                    dir = e.keyCode;
+                    if (!pause) dir = e.keyCode;
                     break;
                 case 83:
-                    dir = e.keyCode;
+                    if (!pause) dir = e.keyCode;
                     break;
                 case 68:
-                    dir = e.keyCode;
+                    if (!pause) dir = e.keyCode;
                     break;
                 case 65:
-                    dir = e.keyCode;
+                    if (!pause) dir = e.keyCode;
                     break;
+                case 32:
+                    pause = !pause;
+                    break;
+
 
             }
 
@@ -70,30 +76,51 @@
 
         function repaint() {
 
-            ctx.fillStyle = "white";
-            ctx.fillRect(0, 0, 900, 450);
+            if (!pause) {
 
-            // cuadrado moviendose
-            ctx.fillStyle = random_rgba();
-            ctx.fillRect(x, y, w, h);
-            ctx.strokeRect(x, y, w, h);
 
-            // cuadrado colision
-            ctx.fillStyle = "black";
-            ctx.fillRect(t_x,t_y,t_w,t_h);
 
-            // rectangulo colision gris
-            ctx.fillStyle = "gray";
-            ctx.fillRect(t1,t2,w1,h1);
+                ctx.fillStyle = "white";
+                ctx.fillRect(0, 0, 900, 450);
 
-            posicion1  = x, posicion2 = y;
+                ctx.font = "25px Arial";
+                ctx.fillStyle = "#1385CC";
+                ctx.fillText("Score:" + score, 20, 30);
 
-            // rectangulo 2 colision gris
-            ctx.fillStyle = "gray";
-            ctx.fillRect(80,350,300,50);
 
-            posicion3 = x, posicion4 = y;
+                // cuadrado moviendose
+                ctx.fillStyle = random_rgba();
+                ctx.fillRect(x, y, w, h);
+                ctx.strokeRect(x, y, w, h);
 
+                // cuadrado colision
+                ctx.fillStyle = "black";
+                ctx.fillRect(t_x, t_y, t_w, t_h);
+
+                // rectangulo colision gris
+                ctx.fillStyle = "gray";
+                ctx.fillRect(t1, t2, w1, h1);
+
+                posicion1 = x, posicion2 = y;
+
+                // rectangulo 2 colision gris
+                ctx.fillStyle = "gray";
+                ctx.fillRect(80, 350, 300, 50);
+
+                posicion3 = x, posicion4 = y;
+
+
+            }
+            else{
+
+                ctx.fillStyle = "rgb(118, 215, 196, 0.010)";
+                ctx.fillRect(0, 0, 500, 500);
+
+                ctx.font = "25px Arial";
+                ctx.fillStyle = "black";
+                ctx.fillText("P a u s a", 190, 200);
+
+            }
 
         }
 
@@ -102,64 +129,67 @@
             return 'rgba(' + o(r() * s) + ',' + o(r() * s) + ',' + o(r() * s) + ')';
         }
 
-        
+
 
         function update() {
 
-            switch (dir) {
-                case 87:
-                    y -= 10;
-                    if(y < -50 ) {y = 550}
-                    break;
-                case 83:
-                    if(y > 550 ) {y = -50}
-                    y += 10;
-                    break;
-                case 68:
-                    if(x > 550 ) {x = -50}
-                    x += 10;
-                    break;
-                case 65:
-                    x -= 10;
-                    if(x < -50 ) {x = 550}
-                    break;
+            if (!pause) {
+
+                switch (dir) {
+                    case 87:
+                        y -= 10;
+                        if (y < -50) { y = 550 }
+                        break;
+                    case 83:
+                        if (y > 550) { y = -50 }
+                        y += 10;
+                        break;
+                    case 68:
+                        if (x > 550) { x = -50 }
+                        x += 10;
+                        break;
+                    case 65:
+                        x -= 10;
+                        if (x < -50) { x = 550 }
+                        break;
+
+                }
+
+
+                if (x < t_x + t_w && x + w > t_x && y < t_y + t_h && y + h > t_y) {
+
+                    generarposicion();
+
+
+                }
+
+                if (x < t1 + w1 && x + w > t1 && y < t2 + h1 && y + h > t2) {
+
+
+                    x = posicion1;
+                    y = posicion2;
+
+                    console.log("tocando");
+
+
+                }
+
+                if (x < t10 + w10 && x + w > t10 && y < t20 + h10 && y + h > t20) {
+
+
+                    x = posicion3;
+                    y = posicion4;
+
+                    console.log("tocando");
+
+
+                }
+
+
+
+
 
             }
-
-            if(x < t_x + t_w &&  x + w > t_x &&    y < t_y + t_h &&    y + h > t_y){
-
-                generarposicion();
-
-
-            }
-
-            if(x < t1 + w1 &&  x + w > t1 &&    y < t2 + h1 &&    y + h > t2){
-
-                
-                x = posicion1;
-                y = posicion2;
-
-                console.log("tocando");
-
-
-            }
-
-            if(x < t10 + w10 &&  x + w > t10 &&    y < t20 + h10 &&    y + h > t20){
-
-                
-                x = posicion3;
-                y = posicion4;
-
-                console.log("tocando");
-
-
-            }
-
-            
-            
-
-
-                
             repaint();
             window.requestAnimationFrame(update);
 
@@ -175,14 +205,14 @@
 
         window.requestAnimationFrame(update);
 
-        function generarposicion(){
+        function generarposicion() {
 
 
-            t_x = Math.floor(Math.random()*(460-0+1)+0);
-            t_y = Math.floor(Math.random()*(390-0+1)+0);
+            t_x = Math.floor(Math.random() * (460 - 0 + 1) + 0);
+            t_y = Math.floor(Math.random() * (390 - 0 + 1) + 0);
 
+            score += 5;
 
-            
 
         }
 
@@ -190,7 +220,7 @@
 
 
 
-        
+
 
     </script>
 
